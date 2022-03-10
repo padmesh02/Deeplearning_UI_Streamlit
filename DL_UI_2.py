@@ -9,7 +9,7 @@ User Interface for Eye and Scan classification using Deep Learning
 #Importing libraries
 import streamlit as st
 import tensorflow
-import keras
+from tensorflow import keras
 from PIL import Image, ImageOps
 import numpy as np
 
