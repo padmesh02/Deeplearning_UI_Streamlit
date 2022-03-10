@@ -2,5 +2,5 @@ pyhthon==3.80
 streamlit==1.7.1.dev20220306
 numpy==1.20.3
 keras==2.8.0
-Image = 8.4.0 
+PIL.Image = 8.4.0 
 setup.sh and Pro
