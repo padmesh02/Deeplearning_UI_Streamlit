@@ -169,25 +169,25 @@ if uploaded_file is not None:
                 
                 if dropdown_model == 'ResNet':
                     resnet_retina_label = resnet_retina_model(model_img)
-                    st.write('Model predictions:', resnet_retina_label[0])
+                    st.write('Class predictions accuracy :', resnet_retina_label[0])
                     st.write('Retina Class predicted: ', resnet_retina_label[1])
                     st.write('retina prediction array: ', resnet_retina_label[2])
             
                 elif dropdown_model == 'Multi_Conv':
                     multi_conv_retina_label = multi_conv_retina_model(model_n_img)
-                    st.write('Model prediction accuracy: ', multi_conv_retina_label[0])
+                    st.write('Class prediction accuracy: ', multi_conv_retina_label[0])
                     st.write('Retina Class prediction: ', multi_conv_retina_label[1])
                     st.write('Retina prediction array: ', multi_conv_retina_label[2])
             
                 elif dropdown_model == 'Simplistic':
                     simplistic_retina_label = simplistic_retina_model(model_n_img)
-                    st.write('Model prediction accuracy: ', simplistic_retina_label[0])
+                    st.write('Class prediction accuracy: ', simplistic_retina_label[0])
                     st.write('Retina Class prediction: ', simplistic_retina_label[1])
                     st.write('Retina prediction array: ', simplistic_retina_label[2])
                 
                 elif dropdown_model == 'AlexNet':
                     alexnet_retina_label = alexnet_retina_model(model_img)
-                    st.write('Model prediction accuracy: ', alexnet_retina_label[0])
+                    st.write('Class prediction accuracy: ', alexnet_retina_label[0])
                     st.write('Retina class prediction: ', alexnet_retina_label[1])
                     st.write('Retina prediction array: ', alexnet_retina_label[2])
             
@@ -203,27 +203,27 @@ if uploaded_file is not None:
                     
                 if dropdown_model == 'ResNet':
                     resnet_derma_label = resnet_derma_model(model_img)
-                    st.write('Model prediction accuracy: ', resnet_derma_label[0])
+                    st.write('Class prediction accuracy: ', resnet_derma_label[0])
                     st.write('Derma Class prediction: ', resnet_derma_label[1])
                     st.write('Derma prediction array: ', resnet_derma_label[2])
             
                 
                 elif dropdown_model == 'Multi_Conv':
                     multi_conv_derma_label = multi_conv_derma_model(model_n_img)
-                    st.write('Model prediction accuracy: ', multi_conv_derma_label[0])
+                    st.write('Class prediction accuracy: ', multi_conv_derma_label[0])
                     st.write('Derma Class prediction: ', multi_conv_derma_label[1])
                     st.write('Derma prediction array: ', multi_conv_derma_label[2])
                 
                 elif dropdown_model == 'Simplistic':
                     simplistic_derma_label = simplistic_derma_model(model_n_img)
-                    st.write('Model prediction accuracy: ', simplistic_derma_label[0])
+                    st.write('Class prediction accuracy: ', simplistic_derma_label[0])
                     st.write('Derma Class prediction: ', simplistic_derma_label[1])
                     st.write('Derma prediction array: ', simplistic_derma_label[2])
                 
             
                 elif dropdown_model == 'AlexNet':
                     alexnet_derma_label = alexnet_derma_model(model_img)
-                    st.write('Model prediction accuracy: ', alexnet_derma_label[0])
+                    st.write('Class prediction accuracy: ', alexnet_derma_label[0])
                     st.write('Derma Class prediction: ', alexnet_derma_label[1])
                     st.write('Derma prediction: ', alexnet_derma_label[2])
                 
