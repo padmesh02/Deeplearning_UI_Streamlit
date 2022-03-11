@@ -169,7 +169,7 @@ if uploaded_file is not None:
                 
                 if dropdown_model == 'ResNet':
                     resnet_retina_label = resnet_retina_model(model_img)
-                    st.write('Model Accuracy : 0.50')
+                    st.write('Model Accuracy : 0.53')
                     st.write('Class predictions probablity :', resnet_retina_label[0])
                     st.write('Retina Class predicted: ', resnet_retina_label[1])
                     st.write('retina prediction array: ', resnet_retina_label[2])
