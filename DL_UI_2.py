@@ -246,12 +246,6 @@ if uploaded_file is not None:
                     st.write('Class prediction probablity: ', round(alexnet_derma_label[0],3))
                     st.write('Derma Class prediction: ', alexnet_derma_label[1])
                     st.write('Derma prediction: ', alexnet_derma_label[2])
-                
-
-        
-        
+                    
   
         
-        
-
-
