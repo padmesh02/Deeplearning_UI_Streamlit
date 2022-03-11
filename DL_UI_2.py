@@ -140,7 +140,7 @@ def resnet_derma_model(img):
 st.title("Eye and Derma Image Classification using Deep Learning")
     
 #Uploading Eye/Skin scan 
-uploaded_file = st.sidebar.file_uploader("Choose a Eye or Derma Scan ...", type=["jpg","jpeg"])
+uploaded_file = st.sidebar.file_uploader("Choose a Eye or Derma Scan ...", type=["png","jpg","jpeg"])
 
 #Drop down to select Eye or Skin Classifiction
 dropdown_type = st.sidebar.selectbox(
