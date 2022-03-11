@@ -188,7 +188,7 @@ if uploaded_file is not None:
                 
                 elif dropdown_model == 'AlexNet':
                     alexnet_retina_label = alexnet_retina_model(model_img)
-                    st.write('Model Accuracy : 0.41')
+                    st.write('Model Accuracy : 0.45')
                     st.write('Class prediction probablity: ', alexnet_retina_label[0])
                     st.write('Retina class prediction: ', alexnet_retina_label[1])
                     st.write('Retina prediction array: ', alexnet_retina_label[2])
@@ -226,7 +226,7 @@ if uploaded_file is not None:
             
                 elif dropdown_model == 'AlexNet':
                     alexnet_derma_label = alexnet_derma_model(model_img)
-                    st.write('Model Accuracy : 0.71')
+                    st.write('Model Accuracy : 0.74')
                     st.write('Class prediction probablity: ', alexnet_derma_label[0])
                     st.write('Derma Class prediction: ', alexnet_derma_label[1])
                     st.write('Derma prediction: ', alexnet_derma_label[2])
