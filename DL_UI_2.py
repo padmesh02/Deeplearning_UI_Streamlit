@@ -174,7 +174,7 @@ if uploaded_file is not None:
             #Drop down to select Model option
             dropdown_model = st.sidebar.selectbox(
                  'Select the Model for Classification: ',
-                 ('ResNet','Multi_Conv', 'Simplistic', 'AlexNet'))
+                 ( 'Simplistic','ResNet','Multi_Conv','AlexNet'))
             st.sidebar.write('Best model is shown by default.\n Different model selection avilable in dropdown')
             
             if st.sidebar.button('PREDICT'):
