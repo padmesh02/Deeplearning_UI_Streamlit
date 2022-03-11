@@ -70,7 +70,7 @@ def multi_conv_retina_model(img):
     model = keras.models.load_model('multi_conv_model_retina (1).h5')
     
     # predicting the image
-    prediction = round(model.predict(img),2)
+    prediction = model.predict(img)
     acc = np.amax(prediction)
     retina_class = np.argmax(prediction)
     return acc, retina_class, prediction
@@ -80,7 +80,7 @@ def simplistic_retina_model(img):
     model = keras.models.load_model('simplistic_model_retina_dropout (1).h5')
     
     # predicting the image
-    prediction = round(model.predict(img),2)
+    prediction = model.predict(img)
     acc = np.amax(prediction)
     retina_class = np.argmax(prediction)
     return acc, retina_class, prediction   
@@ -90,7 +90,7 @@ def resnet_retina_model(img):
     model = keras.models.load_model('resnet_retina_model.h5')
     
     #predicting the image 
-    prediction = round(model.predict(img),2)
+    prediction = model.predict(img)
     acc = np.amax(prediction)
     retina_class = np.argmax(prediction)
     return acc,retina_class, prediction
@@ -100,7 +100,7 @@ def alexnet_retina_model(img):
     model = keras.models.load_model('alexnet_retina_model.h5')
     
     #predicting the image
-    prediction = round(model.predict(img),2)
+    prediction = model.predict(img)
     acc = np.amax(prediction)
     retina_class = np.argmax(prediction)
     return acc, retina_class, prediction
@@ -112,7 +112,7 @@ def multi_conv_derma_model(img):
     model = keras.models.load_model('multi_conv_model_derma (1).h5')
     
     #predicting the image 
-    prediction = round(model.predict(img),2)
+    prediction = model.predict(img)
     acc = np.amax(prediction)
     skin_class = np.argmax(prediction)
     return acc,skin_class, prediction
@@ -122,7 +122,7 @@ def simplistic_derma_model(img):
     model = keras.models.load_model('simplistic_model_derma_dropout (1).h5')
     
     #predicting the image
-    prediction = round(model.predict(img),2)
+    prediction = model.predict(img)
     acc = np.amax(prediction)
     skin_class = np.argmax(prediction)
     return acc, skin_class, prediction
@@ -132,7 +132,7 @@ def alexnet_derma_model(img):
     model = keras.models.load_model('alexnet_derma_model.h5')
     
     #predicting the image
-    prediction = round(model.predict(img),2)
+    prediction = model.predict(img)
     acc =np.amax(prediction)
     skin_class = np.argmax(prediction)
     return acc, skin_class, prediction
@@ -142,7 +142,7 @@ def resnet_derma_model(img):
     model = keras.models.load_model('resnet_derma_model.h5')
     
     #predicting the image
-    prediction = round(model.predict(img),2)
+    prediction = model.predict(img)
     acc =np.amax(prediction)
     skin_class = np.argmax(prediction)
     return acc, skin_class, prediction
@@ -182,28 +182,28 @@ if uploaded_file is not None:
                 if dropdown_model == 'ResNet':
                     resnet_retina_label = resnet_retina_model(model_img)
                     st.write('Model Accuracy : 0.50')
-                    st.write('Class predictions probablity :', resnet_retina_label[0])
+                    st.write('Class predictions probablity :', round(resnet_retina_label[0],3))
                     st.write('Retina Class predicted: ', resnet_retina_label[1])
                     st.write('retina prediction array: ', resnet_retina_label[2])
             
                 elif dropdown_model == 'Multi_Conv':
                     st.write('Model Accuracy : 0.47')
                     multi_conv_retina_label = multi_conv_retina_model(model_n_img)
-                    st.write('Class prediction probablity: ', multi_conv_retina_label[0])
+                    st.write('Class prediction probablity: ', round(multi_conv_retina_label[0],3))
                     st.write('Retina Class prediction: ', multi_conv_retina_label[1])
                     st.write('Retina prediction array: ', multi_conv_retina_label[2])
             
                 elif dropdown_model == 'Simplistic':
                     st.write('Model Accuracy : 0.63')
                     simplistic_retina_label = simplistic_retina_model(model_n_img)
-                    st.write('Class prediction probablity: ', simplistic_retina_label[0])
+                    st.write('Class prediction probablity: ', round(simplistic_retina_label[0],3))
                     st.write('Retina Class prediction: ', simplistic_retina_label[1])
                     st.write('Retina prediction array: ', simplistic_retina_label[2])
                 
                 elif dropdown_model == 'AlexNet':
                     alexnet_retina_label = alexnet_retina_model(model_img)
                     st.write('Model Accuracy : 0.45')
-                    st.write('Class prediction probablity: ', alexnet_retina_label[0])
+                    st.write('Class prediction probablity: ', round(alexnet_retina_label[0],3))
                     st.write('Retina class prediction: ', alexnet_retina_label[1])
                     st.write('Retina prediction array: ', alexnet_retina_label[2])
             
@@ -220,7 +220,7 @@ if uploaded_file is not None:
                 if dropdown_model == 'ResNet':
                     resnet_derma_label = resnet_derma_model(model_img)
                     st.write('Model Accuracy : 0.67')
-                    st.write('Class prediction probablity: ', resnet_derma_label[0])
+                    st.write('Class prediction probablity: ', round(resnet_derma_label[0],3))
                     st.write('Derma Class prediction: ', resnet_derma_label[1])
                     st.write('Derma prediction array: ', resnet_derma_label[2])
             
@@ -228,14 +228,14 @@ if uploaded_file is not None:
                 elif dropdown_model == 'Multi_Conv':
                     st.write('Model Accuracy : 0.71')
                     multi_conv_derma_label = multi_conv_derma_model(model_n_img)
-                    st.write('Class prediction probablity: ', multi_conv_derma_label[0])
+                    st.write('Class prediction probablity: ', round(multi_conv_derma_label[0],3))
                     st.write('Derma Class prediction: ', multi_conv_derma_label[1])
                     st.write('Derma prediction array: ', multi_conv_derma_label[2])
                 
                 elif dropdown_model == 'Simplistic':
                     st.write('Model Accuracy : 0.75')
                     simplistic_derma_label = simplistic_derma_model(model_n_img)
-                    st.write('Class prediction probablity: ', simplistic_derma_label[0])
+                    st.write('Class prediction probablity: ', round(simplistic_derma_label[0],3))
                     st.write('Derma Class prediction: ', simplistic_derma_label[1])
                     st.write('Derma prediction array: ', simplistic_derma_label[2])
                 
@@ -243,7 +243,7 @@ if uploaded_file is not None:
                 elif dropdown_model == 'AlexNet':
                     alexnet_derma_label = alexnet_derma_model(model_img)
                     st.write('Model Accuracy : 0.74')
-                    st.write('Class prediction probablity: ', alexnet_derma_label[0])
+                    st.write('Class prediction probablity: ', round(alexnet_derma_label[0],3))
                     st.write('Derma Class prediction: ', alexnet_derma_label[1])
                     st.write('Derma prediction: ', alexnet_derma_label[2])
                 
