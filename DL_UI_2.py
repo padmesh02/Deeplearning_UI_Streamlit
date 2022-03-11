@@ -15,22 +15,31 @@ import numpy as np
 
 #Function to convert jpg/jpeg format file into array format compatible with model
 def model_image_gen_novel(img_1):
-    
-    # Create the array of the right shape to feed into the keras model
     data_n = np.ndarray(shape=(1, 28, 28, 3), dtype=np.float32)
+
     image = img_1
+
     #image sizing
     size = (28, 28)
+
     image = ImageOps.fit(image, size, Image.ANTIALIAS)
 
     #turn the image into a numpy array
+
     image_a = np.asarray(image)
     # Normalize the image
-    normalized_img_arr = (image_a.astype(np.float32) / 255.0)
+    if image_a.shape == (28,28,4):
+        image_a = image_a[:,:,:3]
 
+    normalized_img_arr = (image_a.astype(np.float32) / 255.0)
+    
     # Load the image into the array
+
     data_n[0] = normalized_img_arr
+
     return data_n
+    
+
 
 #Function to convert jpg format file into array format compatible with model
 def model_image_gen(img):
@@ -44,6 +53,9 @@ def model_image_gen(img):
 
     #turn the image into a numpy array
     image_a = np.asarray(image)
+    if image_a.shape == (32,32,4):
+        image_a = image_a[:,:,:3]
+    
     # Normalize the image
     normalized_img_arr = (image_a.astype(np.float32) / 255.0)
 
@@ -58,7 +70,7 @@ def multi_conv_retina_model(img):
     model = keras.models.load_model('multi_conv_model_retina (1).h5')
     
     # predicting the image
-    prediction = model.predict(img)
+    prediction = round(model.predict(img),2)
     acc = np.amax(prediction)
     retina_class = np.argmax(prediction)
     return acc, retina_class, prediction
@@ -68,7 +80,7 @@ def simplistic_retina_model(img):
     model = keras.models.load_model('simplistic_model_retina_dropout (1).h5')
     
     # predicting the image
-    prediction = model.predict(img)
+    prediction = round(model.predict(img),2)
     acc = np.amax(prediction)
     retina_class = np.argmax(prediction)
     return acc, retina_class, prediction   
@@ -78,7 +90,7 @@ def resnet_retina_model(img):
     model = keras.models.load_model('resnet_retina_model.h5')
     
     #predicting the image 
-    prediction = model.predict(img)
+    prediction = round(model.predict(img),2)
     acc = np.amax(prediction)
     retina_class = np.argmax(prediction)
     return acc,retina_class, prediction
@@ -88,7 +100,7 @@ def alexnet_retina_model(img):
     model = keras.models.load_model('alexnet_retina_model.h5')
     
     #predicting the image
-    prediction = model.predict(img)
+    prediction = round(model.predict(img),2)
     acc = np.amax(prediction)
     retina_class = np.argmax(prediction)
     return acc, retina_class, prediction
@@ -100,7 +112,7 @@ def multi_conv_derma_model(img):
     model = keras.models.load_model('multi_conv_model_derma (1).h5')
     
     #predicting the image 
-    prediction = model.predict(img)
+    prediction = round(model.predict(img),2)
     acc = np.amax(prediction)
     skin_class = np.argmax(prediction)
     return acc,skin_class, prediction
@@ -110,7 +122,7 @@ def simplistic_derma_model(img):
     model = keras.models.load_model('simplistic_model_derma_dropout (1).h5')
     
     #predicting the image
-    prediction = model.predict(img)
+    prediction = round(model.predict(img),2)
     acc = np.amax(prediction)
     skin_class = np.argmax(prediction)
     return acc, skin_class, prediction
@@ -120,7 +132,7 @@ def alexnet_derma_model(img):
     model = keras.models.load_model('alexnet_derma_model.h5')
     
     #predicting the image
-    prediction = model.predict(img)
+    prediction = round(model.predict(img),2)
     acc =np.amax(prediction)
     skin_class = np.argmax(prediction)
     return acc, skin_class, prediction
@@ -130,7 +142,7 @@ def resnet_derma_model(img):
     model = keras.models.load_model('resnet_derma_model.h5')
     
     #predicting the image
-    prediction = model.predict(img)
+    prediction = round(model.predict(img),2)
     acc =np.amax(prediction)
     skin_class = np.argmax(prediction)
     return acc, skin_class, prediction
@@ -175,12 +187,14 @@ if uploaded_file is not None:
                     st.write('retina prediction array: ', resnet_retina_label[2])
             
                 elif dropdown_model == 'Multi_Conv':
+                    st.write('Model Accuracy : 0.47')
                     multi_conv_retina_label = multi_conv_retina_model(model_n_img)
                     st.write('Class prediction probablity: ', multi_conv_retina_label[0])
                     st.write('Retina Class prediction: ', multi_conv_retina_label[1])
                     st.write('Retina prediction array: ', multi_conv_retina_label[2])
             
                 elif dropdown_model == 'Simplistic':
+                    st.write('Model Accuracy : 0.63')
                     simplistic_retina_label = simplistic_retina_model(model_n_img)
                     st.write('Class prediction probablity: ', simplistic_retina_label[0])
                     st.write('Retina Class prediction: ', simplistic_retina_label[1])
@@ -212,12 +226,14 @@ if uploaded_file is not None:
             
                 
                 elif dropdown_model == 'Multi_Conv':
+                    st.write('Model Accuracy : 0.71')
                     multi_conv_derma_label = multi_conv_derma_model(model_n_img)
                     st.write('Class prediction probablity: ', multi_conv_derma_label[0])
                     st.write('Derma Class prediction: ', multi_conv_derma_label[1])
                     st.write('Derma prediction array: ', multi_conv_derma_label[2])
                 
                 elif dropdown_model == 'Simplistic':
+                    st.write('Model Accuracy : 0.75')
                     simplistic_derma_label = simplistic_derma_model(model_n_img)
                     st.write('Class prediction probablity: ', simplistic_derma_label[0])
                     st.write('Derma Class prediction: ', simplistic_derma_label[1])
